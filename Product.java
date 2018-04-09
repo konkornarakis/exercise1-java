@@ -3,9 +3,9 @@ public class Product {
 	private String model;
 	private int year;
 	private String manufacturer;
-	private int price;
+	private double price;
 	
-	public item(String model, int year, String manufacturer, int price) {
+	public Product(String model, int year, String manufacturer, double price) {
 		this.model = model;
 		this.year = year;
 		this.manufacturer = manufacturer;
@@ -24,7 +24,7 @@ public class Product {
 		return this.manufacturer;
 	}
 	
-	public int getPrice() {
+	public double getPrice() {
 		return this.price;
 	}
 	

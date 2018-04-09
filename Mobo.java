@@ -1,10 +1,13 @@
-public class Mobo {
+public class Mobo extends Product {
 	
 	private String cpuType;
 	private int memory;
 	private int ports;
 	
-	public Mobo(String cpuType, int memory, int ports) {
+	private double discount = 0.25F;
+	
+	public Mobo(String model, int year, String manufacturer, double price, String cpuType, int memory, int ports) {
+		super(model, year, manufacturer, price);
 		this.cpuType = cpuType;
 		this.memory = memory;
 		this.ports = ports;
@@ -32,5 +35,9 @@ public class Mobo {
 
 	public void setPorts(int nPorts) {
 		this.ports = nPorts;
+	}
+	
+	public double getDiscount() {
+		return discount;
 	}
 }
