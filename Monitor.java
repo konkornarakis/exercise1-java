@@ -5,7 +5,7 @@ public class Monitor extends Product {
 	private int monitorRes;
 	private String monitorPorts;
 	
-	private long discount = 0.1;
+	private double discount = 0.1;
 	
 	public Monitor(String model, int year, String manufacturer, double price, String monitorType, int monitorDimension, int monitorRes, String monitorPorts) {
 		super(model, year, manufacturer, price);
@@ -15,7 +15,7 @@ public class Monitor extends Product {
 		this.monitorPorts = monitorPorts;
 	}
 	
-	public long getDiscount() {
+	public double getDiscount() {
 		return discount;
 	}
 }

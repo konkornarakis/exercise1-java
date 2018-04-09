@@ -4,7 +4,7 @@ public class Mobo extends Product {
 	private int memory;
 	private int ports;
 	
-	private double discount = 0.25F;
+	private double discount = 0.25;
 	
 	public Mobo(String model, int year, String manufacturer, double price, String cpuType, int memory, int ports) {
 		super(model, year, manufacturer, price);
