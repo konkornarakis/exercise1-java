@@ -1,17 +1,36 @@
 public class Order {
 	
-		private String id, productOrdered, clientName, clientTelNumb, dateOfPurchase, orderETA;
+		private String productOrdered, clientName, clientTelNum, dateOfOrder, orderETA, orderStatus;
 		private double finalTotalCost;
-		private boolean orderStatus;
+		private int id;
 		
-		public Order(String id, String productOrdered, String clientName, String clientTelNum, String dateOfPurchase, String orderETA, double finalTotalCost, boolean orderStatus) {
-			this.id = id;
-			this.productOrdered = productOrdered;
+		public static int orderID = 0;
+	
+		public Order(Product p, String clientName, String clientTelNum, String dateOfOrder, String orderETA, double finalTotalCost, String orderStatus) {
+			this.id = giveOrderID();
+			
 			this.clientName = clientName;
-			this.clientTelNumb = clientTelNum;
-			this.dateOfPurchase = dateOfPurchase;
+			this.clientTelNum = clientTelNum;
+			this.dateOfOrder = dateOfOrder;
 			this.orderETA = orderETA;
 			this.finalTotalCost = finalTotalCost;
 			this.orderStatus = orderStatus;
+		}
+		
+		public static int giveOrderID() {
+			++orderID;
+			return orderID;
+		}
+		
+		public int getOrderID() {
+			return id;
+		}
+		
+		public void setOrderStatus(String orderStatus) {
+			this.orderStatus = orderStatus;
+		}
+		
+		public String toString() {
+			return "Order ID: "+this.id+". Client's name: "+this.clientName+". Client's tel. numb.: "+this.clientTelNum+". Date of order: "+this.dateOfOrder+". Order ETA: "+this.orderETA+". Final total cost: "+this.finalTotalCost+". Order status: "+this.orderStatus;
 		}
 }

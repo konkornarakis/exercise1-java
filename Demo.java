@@ -2,15 +2,53 @@ import java.util.*;
 
 public class Demo {
 	
+	public static boolean checkAvailability(ArrayList<Product> stock, Product product) {
+	boolean found = false;
+	for(Product p: stock) {
+		if(p instanceof Mobo && (product.getModel() == p.getModel())) {
+			found = true;
+			break;
+		};
+		if(p instanceof CPU && (product.getModel() == p.getModel())) {
+			found = true;
+			break;
+		};
+		if(p instanceof GPU && (product.getModel() == p.getModel())) {
+			found = true;
+			break;
+		};
+		if(p instanceof RAM && (product.getModel() == p.getModel())) {
+			found = true;
+			break;
+		};
+		if(p instanceof Monitor && (product.getModel() == p.getModel())) {
+			found = true;
+			break;
+		};
+		if(p instanceof Keyboard && (product.getModel() == p.getModel())) {
+			found = true;
+			break;
+		};
+		if(p instanceof Mouse && (product.getModel() == p.getModel())) {
+			found = true;
+			break;
+		};
+		if(p instanceof Printer && (product.getModel() == p.getModel())) {
+			found = true;
+			break;
+		};
+	};
+	return found;
+}
+	
 	public static void main(String[] arguements) {
 		System.out.println("Starting...");
-		/*           Testing            */
 		ArrayList<Product> stock = new ArrayList<Product>();
 		ArrayList<Order> orders = new ArrayList<Order>();
 		ArrayList<Sale> sales = new ArrayList<Sale>();
 		
 		//Creating objects for stock ArrayList
-		Product mobo1 = new Mobo("ZQ-11", 2017, "Asus", 67.0, "testCpuType", 16, 8);
+		Product mobo1 = new Mobo("ZQ-11", 2017, "Asus", 67.0, "AMD", 16, 8);
 		Product mobo2 = new Mobo("X299-A", 2017, "Asus", 271.0, "Intel", 32, 8);
 		
 		Product cpu1 = new CPU("ryzen", 2016, "AMD", 132.0, 3, 4 , false);
@@ -56,51 +94,113 @@ public class Demo {
 		stock.add(printer1);
 		stock.add(printer2);
 		
-		orders = null;
-		sales = null;
-		
-		boolean done = false;
+		boolean done = false, found = false;
 		Scanner sc = new Scanner(System.in);
+		int selection;
+		String input, name, telNum;
+		String orderETA = "14/4/2018", date = "10/4/2018";
 		
 		while (!done) {
 			System.out.println("1. View availability \n2. View orders \n3. Exit");
-			int selection = sc.nextInt();
+			selection = sc.nextInt();
 			if (selection == 1) {
 				System.out.println("You entered View availability");
 				System.out.println("1. Components \n2. Peripherals");
 				selection = sc.nextInt();
+				
 				if (selection == 1) {
 					System.out.println("You entered Components");
-					done = true;
+					System.out.println("1. Motherboards \n2. Processor(CPU) \n3. Memory(RAM) \n4. Graphics Cards(GPU)");
+					selection = sc.nextInt();
+					
+					if (selection == 1) {
+						System.out.println("1. Asus ZQ-11 \n2. Asus X299-A");
+						selection = sc.nextInt();
+						if (selection == 1) { 
+							System.out.println(mobo1.toString());
+							found = checkAvailability(stock, mobo1);
+							if (found) { 
+								System.out.println("It is available");
+								System.out.println("1. Buy it \n2. Exit");
+								selection = sc.nextInt();
+								if (selection == 1) {
+									System.out.println("Give: Name, Tel. Num.");
+									name = sc.nextLine(); //Not working if i delete this line
+									name = sc.nextLine();
+									System.out.println("Name - OK :"+name);
+									telNum = sc.nextLine();
+									System.out.println("Tel. Numb. - OK: "+telNum);
+									//Sale sale1 = new Sale(mobo1, "Konstantinos Kornarakis", "123", "12.12.2018", mobo1.getPrice()-mobo1.gerPrice()*mobo1.getDiscount());
+									Sale sale = new Sale(mobo1, name, telNum, date, 70.0);
+									sales.add(sale);
+									stock.remove(mobo1);
+									System.out.println("Purchase completed.");
+								};
+							} else {
+								System.out.println("It is not available. \n1. Order it \n2.Exit");
+								selection = sc.nextInt();
+								if (selection == 1) {
+									System.out.println("Give: Name, Tel. Num.");
+									name = sc.nextLine(); //Not working if i delete this line
+									name = sc.nextLine();
+									System.out.println("Name - OK :"+name);
+									telNum = sc.nextLine();
+									System.out.println("Tel. Numb. - OK: "+telNum);
+									//Order order = new Order(mobo1, name, telNum, date, orderETA, mobo1.getPrice()-mobo1.gerPrice()*mobo1.getDiscount(), false);
+									Order order = new Order(mobo1, name, telNum, date, orderETA, 110.0, "Pending"); //testing with a random value for price
+									orders.add(order);
+									System.out.println("Order placed");
+								}
+							}; //line 114
+						} else if (selection == 2) {
+							System.out.println(mobo2.toString());
+							found = checkAvailability(stock, mobo2);
+						};
+					} else if (selection == 2) {
+						
+					} else if (selection == 3) {
+						
+					} else if (selection == 4) {
+						
+					};
 				} else if (selection == 2) {
 					System.out.println("You entered Peripherals");
+					System.out.println("1. Monitors \n2. Keyboards \n3. Mouse \n4. Printers");
+					selection = sc.nextInt();
+					if (selection == 1) {
+						
+					} else if (selection == 2) {
+						
+					} else if (selection == 3) {
+						 
+					} else if (selection == 4) {
+					
+					};
 					done = true;
 				}
+				
 			} else if (selection == 2) {
 				System.out.println("You entered View orders");
+				for(int i = 0; i < orders.size(); i++) {
+					System.out.println(i+". Order number "+i);
+				}
+				selection = sc.nextInt();
+				int selection2 = selection;
+				System.out.println("You selected numb. "+selection);
+				System.out.println(orders.get(selection).toString());
+				System.out.println("1. Change status \n2. Purchase");
+				selection = sc.nextInt();
+				if (selection == 1) {
+					orders.get(selection2).setOrderStatus("Completed");
+					System.out.println("Status changed to: Completed");
+				} else if (selection == 2) {
+					//makePurchase();
+				}
 			} else if (selection == 3) {
 				done = true;
-			}
-		}
+			};
+		};
 		
-		/*
-		//Creating objects for orders ArrayList
-		Order order1 = new Order("1A", "mobo", "Konstantinos Kornarakis", "6969696969", "9/4/2018", "13/4/2018", 70.0, false);
-		Order order2 = new Order("2A", "disk", "Tasos Kastanis", "2828282828", "2/4/2018", "18/4/2018", 55.0, false);
-		orders.add(order1);
-		orders.add(order2);
-		*/
-		
-		/*
-		//Creating objects for sales ArrayList
-		Sale sale1 = new Sale("1S", "monitor", "Konstantinos Kornarakis", "6969696969", "22/3/2018", 122.0);
-		Sale sale2 = new Sale("2S", "printer", "Tasos Kastanis", "2828282828", "7/1/2018", 203.0);
-		
-		sales.add(sale1);
-		sales.add(sale2);
-		*/
-		
-		//
 		System.out.println("Terminated");
 	}
 }

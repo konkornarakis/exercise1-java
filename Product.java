@@ -43,4 +43,8 @@ public class Product {
 	public void setPrice(int nPrice) {
 		this.price = nPrice;
 	}
+	
+	public String toString() {
+		return "Model: "+getModel()+". Year: "+getYear()+". Manufacturer: "+getManufacturer()+". Price: "+getPrice()+".";
+	}
 }
