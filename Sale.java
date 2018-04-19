@@ -59,4 +59,9 @@ public class Sale {
 	public void setFinalTotalCost(double finalTotalCost) {
 		this.finalTotalCost = finalTotalCost;
 	}
+
+	public String toString() {
+		return "Sale ID: " + this.id + ". Client's name: " + this.clientName + ". Client's tel. numb.: "
+				+ this.clientTelNumb + ". Date of purchase: " + dateOfSale + ". Final total cost: " + this.finalTotalCost + ".";
+	}
 }
