@@ -2,22 +2,11 @@ public class Printer extends Product {
 
 	private String printerTech;
 	private String printerType;
-	private int stock = 2;
-	private final double DISCOUNT = 0.1;
 
-	public Printer(String model, int year, String manufacturer, double price, String printerTech, String printerType) {
-		super(model, year, manufacturer, price);
+	public Printer(String model, int year, String manufacturer, double price, int stock, String printerTech, String printerType) {
+		super(model, year, manufacturer, price, stock);
 		this.printerTech = printerTech;
 		this.printerType = printerType;
-		this.stock = stock;
-	}
-
-	public double getDiscount() {
-		return DISCOUNT;
-	}
-
-	public int getStock() {
-		return this.stock;
 	}
 
 	public String getPrinterTech() {
@@ -36,11 +25,4 @@ public class Printer extends Product {
 		this.printerType = printerType;
 	}
 
-	/*
-	 * public void setStock(int newStock) { this.stock = newStock; }
-	 */
-
-	public void updateStock() {
-		this.stock -= 1;
-	}
 }

@@ -4,13 +4,14 @@ public class Product {
 	private int year;
 	private String manufacturer;
 	private double price;
+	private int stock;
 
-	public Product(String model, int year, String manufacturer, double price) {
+	public Product(String model, int year, String manufacturer, double price, int stock) {
 		this.model = model;
 		this.year = year;
 		this.manufacturer = manufacturer;
 		this.price = price;
-		//this.stock = stock;
+		this.stock = stock;
 	}
 
 	public String getModel() {
@@ -30,11 +31,7 @@ public class Product {
 	}
 
 	public int getStock() {
-		return this.getStock();
-	}
-
-	public double getDiscount() {
-		return this.getDiscount();
+		return this.stock;
 	}
 
 	public void setModel(String model) {
@@ -53,13 +50,18 @@ public class Product {
 		this.price = price;
 	}
 
+	public void setStock(int stock) {
+		this.stock = stock;
+	}
+	
+	@Override
 	public String toString() {
 		return "Model: " + getModel() + ". Year: " + getYear() + ". Manufacturer: " + getManufacturer() + ". Price: "
 				+ getPrice() + ".";
 	}
 
 	public void updateStock() {
-		this.updateStock();
+		this.setStock(this.getStock()-1);
 	}
 	
 	//This method checks if 2 products are matching. 2 products are matching if they have the same model name, year, manufacturer, price

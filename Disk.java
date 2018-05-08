@@ -3,23 +3,12 @@ public class Disk extends Product {
 	private String diskType;
 	private double diskDimensions;
 	private int diskCapacity;
-	private int stock = 2;
-	private final double DISCOUNT = 0.25;
 	
-	public Disk(String model, int year, String manufacturer, double price, String diskType, double diskDimensions, int diskCapacity) {
-		super(model, year, manufacturer, price);
+	public Disk(String model, int year, String manufacturer, double price, int stock, String diskType, double diskDimensions, int diskCapacity) {
+		super(model, year, manufacturer, price, stock);
 		this.diskType = diskType;
 		this.diskDimensions = diskDimensions;
 		this.diskCapacity = diskCapacity;
-		this.stock = stock;
-	}
-	
-	public double getDiscount() {
-		return DISCOUNT;
-	}
-	
-	public int getStock() {
-		return stock;
 	}
 	
 	public String getDiskType() {
@@ -46,7 +35,4 @@ public class Disk extends Product {
 		this.diskCapacity = diskCapacity;
 	}
 	
-	public void updateStock() {
-		stock -= 1;
-	}
 }

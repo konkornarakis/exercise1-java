@@ -3,19 +3,12 @@ public class Mobo extends Product {
 	private String cpuType;
 	private int memory;
 	private int ports;
-	private int stock = 2;
-	private final double DISCOUNT = 0.25;
 
-	public Mobo(String model, int year, String manufacturer, double price, String cpuType, int memory, int ports) {
-		super(model, year, manufacturer, price);
+	public Mobo(String model, int year, String manufacturer, double price, int stock, String cpuType, int memory, int ports) {
+		super(model, year, manufacturer, price, stock);
 		this.cpuType = cpuType;
 		this.memory = memory;
 		this.ports = ports;
-		this.stock = stock;
-	}
-
-	public double getDiscount() {
-		return DISCOUNT;
 	}
 
 	public String getCpuType() {
@@ -30,10 +23,6 @@ public class Mobo extends Product {
 		return ports;
 	}
 
-	public int getStock() {
-		return stock;
-	}
-
 	public void setCpuType(String nCpuType) {
 		this.cpuType = nCpuType;
 	}
@@ -45,15 +34,7 @@ public class Mobo extends Product {
 	public void setPorts(int nPorts) {
 		this.ports = nPorts;
 	}
-
-	public void setStock(int newStock) {
-		this.stock = newStock;
-	}
-
-	public void updateStock() {
-		this.stock -= 1;
-	}
-
+	
 	public String toString() {
 		return super.toString() + " CPU Type: " + getCpuType() + ". Memory: " + getMemory() + ". Ports: " + getPorts()
 				+ ".";
